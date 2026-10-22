@@ -1,28 +1,20 @@
-function generateNumberTriangle(numRows) {
-    const triangle = [];
+function solve(n) {
+    if (n <= 0) return 0n;
     
-    for (let i = 0; i < numRows; i++) {
-        triangle[i] = [];
-        const rowLength = i + 2; 
-        // Row 1 has 2 elements, Row 2 has 3, etc.
+    let currentRow = [1n, 1n];
+    
+    for (let i = 1; i < n; i++) {
+        const nextRow = new Array(i + 2);
+        nextRow[0] = 1n;
         
-        for (let j = 0; j < rowLength; j++) {
-            const above = (i > 0 && triangle[i - 1][j] !== undefined) ? triangle[i - 1][j] : 0;
-            const left = (j > 0) ? triangle[i][j - 1] : 0;
-            
-            if (i === 0 && j === 0) {
-                triangle[i][j] = 1;
-            } else {
-                triangle[i][j] = above + left;
-            }
+        for (let j = 1; j < nextRow.length; j++) {
+            const above = j < currentRow.length ? currentRow[j] : 0n;
+            const left = nextRow[j - 1];
+            nextRow[j] = above + left;
         }
+        
+        currentRow = nextRow;
     }
     
-    return triangle;
+    return currentRow[currentRow.length - 1];
 }
-
-// Example usage (4 rows):
-const triangle = generateNumberTriangle(4);
-triangle.forEach((row, index) => {
-    console.log(`Row ${index + 1}:`, row.join(' '));
-});
