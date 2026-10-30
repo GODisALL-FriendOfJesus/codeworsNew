@@ -18,4 +18,4 @@ function longestConsec(strarr, k) {
     }
   }
 return longest;}
-   console.log(longestConsec(['ddd','kk','l','lllllllll'],2))
+   console.log(longestConsec(['ddd','kk','l','lllllllll'],2));
