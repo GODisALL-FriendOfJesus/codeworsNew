@@ -21,5 +21,10 @@ function whiteBlackAreas(cols, rows) {
   const white=(rseven * cseven) +(rsodd *csodd);
   const black=(rsodd *cseven) +(rseven * csodd);
   
-  return {white,black}
+  
+  return [white,black]
 }
+  const cs = [3, 1, 2, 7, 1];
+const rs = [1, 8, 4, 5, 2];
+
+console.log(whiteBlackAreas(cs, rs));
